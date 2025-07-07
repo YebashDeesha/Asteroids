@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+import sys
 from player import *
 from circleshape import *
 from asteroid import Asteroid
@@ -26,6 +27,11 @@ def main():
             if event.type == pygame.QUIT:
                 return
         updatable.update(dt)
+        for a in asteroids:
+            if a.colision(player):
+                print("Game over!")
+                sys.exit()
+
 
         screen.fill("black")
 
